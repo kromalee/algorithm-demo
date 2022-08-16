@@ -1,0 +1,63 @@
+{
+	// Place your algorithm-demo workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	// 来源: https://www.cnblogs.com/wenruo/p/11100537.html
+	"Class Differece": {
+		"prefix": "Differece",
+		"body": [
+			"/**",
+			" * ",
+			" * @param {number[]} nums ",
+			" */",
+			"",
+			" var Difference = function (nums) {",
+			"    var diff = Array(nums.length).fill(0)",
+			"    diff[0] = nums[0]",
+			"    for (var i = 1; i < diff.length; i++) {",
+			"        diff[i] = nums[i] - nums[i - 1]",
+			"    }",
+			"    this.diff = diff",
+			"}",
+			"/**",
+			" *",
+			" * @param {number} i 闭区间起点",
+			" * @param {number} j 闭区间终点",
+			" * @param {number} val 区间增加的数可以是负数",
+			" */",
+			"Difference.prototype.increment = function (i, j, val) {",
+			"    this.diff[i] += val",
+			"    if (j + 1 < this.diff.length) {",
+			"        this.diff[j + 1] -= val",
+			"    }",
+			"}",
+			"/**",
+			" * ",
+			" * @returns {number[]} 恢复原数组",
+			" */",
+			"Difference.prototype.result = function () {",
+			"    var res = Array(this.diff.length).fill(0)",
+			"    res[0] = this.diff[0]",
+			"    for (var i = 1; i < res.length; i++) {",
+			"        res[i] = res[i - 1] + this.diff[i]",
+			"    }",
+			"    return res",
+			"}",
+			""
+		],
+		"description": "差分数组"
+	}
+}
