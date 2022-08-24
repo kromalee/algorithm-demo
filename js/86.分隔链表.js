@@ -98,10 +98,10 @@ LinkList.log = function (head) {
  */
 var partition = function (head, x) {
     var p = head
-    var left = (new LinkList([])).getHead()
-    var leftP = left
-    var right = (new LinkList([])).getHead()
-    var rightP = right
+    var left = new LinkList([])
+    var leftP = left.getHead()
+    var right = new LinkList([])
+    var rightP = right.getHead()
     while (p) {
         if (p.val < x) {
             leftP.next = new ListNode(p.val)
@@ -114,8 +114,8 @@ var partition = function (head, x) {
             p = p.next
         }
     }
-    leftP.next = right.next
-    return left.next
+    leftP.next = right.getLinkList()
+    return left.getLinkList()
 };
 // @lc code=end
 
