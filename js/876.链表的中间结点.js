@@ -92,28 +92,37 @@ LinkList.log = function (head) {
  * @param {ListNode} head
  * @return {ListNode}
  */
+// var middleNode = function (head) {
+//     var nullP = new ListNode(null)
+//     nullP.next = head
+//     var p1 = nullP
+//     var p2 = nullP
+//     var count = 0
+//     while (p1.next) {
+//         count++
+//         p1 = p1.next
+//         if (p1.next) {
+//             count++
+//             p1 = p1.next
+//         }
+//         p2 = p2.next
+//     }
+//     if (count % 2 === 0) {
+//         return p2.next
+//     }
+//     else {
+//         return p2
+//     }
+// };
 var middleNode = function (head) {
-    var nullP = new ListNode(null)
-    nullP.next = head
-    var p1 = nullP
-    var p2 = nullP
-    var count = 0
-    while (p1.next) {
-        count++
-        p1 = p1.next
-        if (p1.next) {
-            count++
-            p1 = p1.next
-        }
-        p2 = p2.next
+    var slow = head
+    var fast = head
+    while (fast && fast.next) {
+        fast = fast.next.next
+        slow = slow.next
     }
-    if (count % 2 === 0) {
-        return p2.next
-    }
-    else {
-        return p2
-    }
-};
+    return slow
+}
 // @lc code=end
 LinkList.log(middleNode((new LinkList([1, 2, 3, 4, 5])).getLinkList()))
 LinkList.log(middleNode((new LinkList([1, 2, 3, 4, 5, 6])).getLinkList()))
