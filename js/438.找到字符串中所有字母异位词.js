@@ -18,27 +18,35 @@ var findAnagrams = function (s, p) {
     }
     var left = 0; var right = 0
     var valid = 0
-    var len = p.length
     var result = []
 
     while (right < s.length) {
+        // 扩张
         var c = s[right]
         right++
+        // 扩张影响,先window,后valid
         if (need.has(c)) {
             window.set(c, (window.get(c) || 0) + 1)
             if (window.get(c) === need.get(c)) {
                 valid++
             }
         }
-        while (valid === need.size) {
+        // 窗口宽度等于 结果length
+        while (right - left >= p.length) {
+            // 处理结果
+            if (valid === need.size) {
+                result.push(left)
+            }
+
+            // 收缩
             var d = s[left]
-            result.push(left)
             left++
+            // 收缩影响,先valid后window
             if (need.has(d)) {
-                window.set(d, window.get(d) - 1)
                 if (need.get(d) === window.get(d)) {
                     valid--
                 }
+                window.set(d, window.get(d) - 1)
             }
         }
     }
