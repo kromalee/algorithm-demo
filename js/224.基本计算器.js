@@ -40,12 +40,6 @@ var calculate = function (s) {
                     case '-':
                         stk.push(-num)
                         break;
-                    case '*':
-                        stk.push(stk[stk.length - 1] * num)
-                        break;
-                    case '/':
-                        stk.push(stk[stk.length - 1] / num)
-                        break;
                     default:
                         break;
                 }
